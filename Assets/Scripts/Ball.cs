@@ -6,13 +6,30 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody _rigidbody;
-    public float _thrust = 30.0f;
+    [SerializeField] private Health _health;
+    [SerializeField]private float _fireDamage = 1.0f;
+    [SerializeField] private float _thrust = 30.0f;
+    private bool _onGround;
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _onGround = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.TryGetComponent(out Surface surface))
+        {
+            _onGround = true;
+        }
     }
     public void Jump()
     {
-        _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
+        _rigidbody.velocity = Vector3.zero;
+        if(_onGround == true)
+        {
+            _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
+            _onGround = false;
+        }
     }
 }
