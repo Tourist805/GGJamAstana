@@ -16,11 +16,17 @@ public class Ball : MonoBehaviour
         _onGround = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.TryGetComponent(out Surface surface))
+        if(other.TryGetComponent(out Surface surface))
         {
             _onGround = true;
+        }
+        if(other.TryGetComponent(out Damagable damagable))
+        {
+            _health.TakeDamage(_fireDamage);
+            Debug.Log(_health.HitPoints);
         }
     }
     public void Jump()
@@ -28,7 +34,7 @@ public class Ball : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         if(_onGround == true)
         {
-            _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
+            _rigidbody.AddForce(transform.up * _thrust * Time.deltaTime, ForceMode.Impulse);
             _onGround = false;
         }
     }
