@@ -9,6 +9,13 @@ public class Ball : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField]private float _fireDamage = 1.0f;
     [SerializeField] private float _thrust = 30.0f;
+    [Header("Particles")]
+    [SerializeField] private GameObject _movingParticle;
+
+    [Header("Audio Effect")]
+    [SerializeField] private AudioSource _movingAudio = null;
+    private bool _audioPlayed = false;
+
     private bool _onGround;
     private void Start()
     {
@@ -34,5 +41,14 @@ public class Ball : MonoBehaviour
         //_rigidbody.velocity = Vector3.zero;
        
         _rigidbody.AddForce(transform.up * _thrust, ForceMode.Force);
+    }
+
+    private void Update()
+    {
+        if(_rigidbody.velocity.z > 0)
+        {
+            //Instantiate(_movingParticle, transform.position, Quaternion.identity);
+           // _movingAudio.Play();
+        }
     }
 }
