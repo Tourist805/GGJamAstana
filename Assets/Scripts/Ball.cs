@@ -32,10 +32,7 @@ public class Ball : MonoBehaviour
     public void Jump()
     {
         _rigidbody.velocity = Vector3.zero;
-        if(_onGround == true)
-        {
-            _rigidbody.AddForce(transform.up * _thrust * Time.deltaTime, ForceMode.Impulse);
-            _onGround = false;
-        }
+       
+        _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
     }
 }
