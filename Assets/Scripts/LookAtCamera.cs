@@ -10,6 +10,6 @@ public class LookAtCamera : MonoBehaviour
     private void LateUpdate()
     {
         transform.LookAt(target.transform);
-        transform.position = transform.position + new Vector3(0, 0, _movementSpeed * Time.deltaTime);
+        //transform.position = transform.position + new Vector3(0, 0, _movementSpeed * Time.deltaTime);
     }
 }
