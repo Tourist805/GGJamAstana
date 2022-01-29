@@ -11,11 +11,6 @@ public class Ball : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
-
-    public void Move(Vector3 direction, float speed)
-    {
-        _rigidbody.AddForce(direction * speed);
-    }
     public void Jump()
     {
         _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
