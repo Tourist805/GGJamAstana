@@ -31,8 +31,8 @@ public class Ball : MonoBehaviour
     }
     public void Jump()
     {
-        _rigidbody.velocity = Vector3.zero;
+        //_rigidbody.velocity = Vector3.zero;
        
-        _rigidbody.AddForce(transform.up * _thrust, ForceMode.Impulse);
+        _rigidbody.AddForce(transform.up * _thrust, ForceMode.Force);
     }
 }

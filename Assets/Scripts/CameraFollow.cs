@@ -11,9 +11,8 @@ public class CameraFollow : MonoBehaviour
     {
         offset = transform.position - _ball.transform.position;
     }
-    void LateUpdate()
+    void Update()
     {
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
         transform.position = _ball.transform.position + offset;
     }
 }
