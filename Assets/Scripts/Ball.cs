@@ -40,6 +40,10 @@ public class Ball : MonoBehaviour
         {
             _gameOverUI.OpenWindow(true);
         }
+        if(other.TryGetComponent(out NoRollable noRollable))
+        {
+            _gameOverUI.OpenWindow(false);
+        }
     }
     public void Jump()
     {
