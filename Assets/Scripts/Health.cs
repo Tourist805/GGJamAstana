@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] protected float _hitPoints = 10.0f;
     [SerializeField] private bool _destroyOnDeath = true;
+    [SerializeField] private HealthBarHandler _healthBarHandler;
+    public float MaxHealth = 10.0f;
 
     public UnityAction OnDead, OnHealthChange;
 
@@ -16,6 +18,7 @@ public class Health : MonoBehaviour
     {
         _hitPoints -= damagePoints;
         Debug.Log(HitPoints);
+        _healthBarHandler.UpdateHealthBar();
 
         OnHealthChange?.Invoke();
 
