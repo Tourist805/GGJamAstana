@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     [Header("Audio Effect")]
     [SerializeField] private AudioSource _movingAudio = null;
     private bool _audioPlayed = false;
+    [SerializeField]private GameOverUI _gameOverUI;
 
     private bool _onGround;
     private void Start()
@@ -34,6 +35,10 @@ public class Ball : MonoBehaviour
         {
             _health.TakeDamage(_fireDamage);
             Debug.Log(_health.HitPoints);
+        }
+        if(other.TryGetComponent(out Finish finish))
+        {
+            _gameOverUI.OpenWindow(true);
         }
     }
     public void Jump()
