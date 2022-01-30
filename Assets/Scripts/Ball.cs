@@ -54,10 +54,10 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if(_rigidbody.velocity.z > 0)
+        if(_rigidbody.velocity.magnitude > 0)
         {
             //Instantiate(_movingParticle, transform.position, Quaternion.identity);
-           // _movingAudio.Play();
+           _movingAudio.Play();
         }
     }
 }
